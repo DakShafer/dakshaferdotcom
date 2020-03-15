@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class PageTitle extends Component {
     render() {
         return (
-            <h1>dakota.shafer</h1>
+            <h3>dakota.shafer</h3>
     )};
 }
 
