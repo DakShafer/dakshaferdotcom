@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 
+// import components for the home page
+
+
 class PageTitle extends Component {
     render() {
         return (
-            <h3>dakota.shafer</h3>
+            <h2>dakota.shafer</h2>
     )};
 }
+
 
 export default PageTitle

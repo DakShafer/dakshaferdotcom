@@ -12,7 +12,7 @@ import 'rsuite/lib/styles/index.less';
 
 // Import App Components
 import PageTitle from './Components/PageTitle';
-import NavigationBar from './Components/NavBar';
+import AppRouter from './Router';
 
 
 
@@ -20,7 +20,7 @@ function App() {
   return (
     <Container>
       <PageTitle />
-      <NavigationBar />
+      <AppRouter />
     </Container>
   );
 }
