@@ -18,23 +18,10 @@ import HomePage from './Views/Home';
 
 // Construct a router to switch between App views
 class AppRouter extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      active: 'home'
-    };
-    this.handleSelect = this.handleSelect.bind(this);
-  }
-  handleSelect(activeKey) {
-    this.setState({ active: activeKey });
-  }
   render() {
-    const { active } = this.state;
     return (
       <Router>
         <div>
-          <NavigationBar appearance="subtle" reversed active={active} onSelect={this.handleSelect} />
-
           <Switch>
             <Route exact path="/">
               <HomePage />

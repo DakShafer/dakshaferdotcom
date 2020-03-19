@@ -1,0 +1,11 @@
+@import '~rsuite/dist/styles/rsuite-dark.css';
+
+:root {
+    background-color: whitesmoke;
+}
+
+#app-container {
+    bottom: 0px;
+    background-color: whitesmoke;
+}
+

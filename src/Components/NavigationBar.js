@@ -5,73 +5,166 @@
 //
 
 import React, { active } from "react";
+import { Container, Header, Content, Footer } from 'rsuite';
+
+import './NavigationBar.css';
 
 // React Suite Navigatino UI imports
 import {
+  Navbar,
   Nav,
   Icon,
   Dropdown,
 } from 'rsuite';
 
-import { Link } from 'react-router-dom';
+// react-router-dom imports for view routing
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 // build custom nav layout
-const NavigationBar = ({ active, onSelect, ...props }) => {
+const BarLayout = ({ onSelect, activeKey, ...props }) => {
   return (
-    <Nav {...props} activeKey={active} onSelect={onSelect}>
+    <Navbar {...props}>
+      <Navbar.Header>
+        <h3 className="namelogo" >
+          Dakota Shafer
+        </h3>
+      </Navbar.Header>
+      <Navbar.Body>
+        <Nav onSelect={onSelect} activeKey={activeKey}>
 
-      <Nav.Item 
-        eventKey="about" 
-        componentClass={Link} 
-        to="/" 
-        icon={<Icon icon="home" />}>
-        About Me
-      </Nav.Item>
+          <Nav.Item 
+            icon={<Icon icon="home" />} 
+            eventKey="1" 
+            componentClass={Link}
+            to="/">
+              Home
+          </Nav.Item>
 
-      <Nav.Item 
-        eventKey="resume" 
-        componentClass={Link} 
-        to="/resume" 
-        icon={<Icon icon="file-text" />}>
-        Resume
-      </Nav.Item>
+          <Nav.Item 
+            icon={<Icon icon="file-text" />} 
+            eventKey="2" 
+            componentClass={Link}
+            to="/resume">
+              Resume
+          </Nav.Item>
 
-      <Nav.Item
-        eventKey="projects"
-        componentClass={Link}
-        to="/projects"
-        icon={<Icon icon="bar-chart" />}>
-        Projects
-      </Nav.Item>
 
-      <Dropdown
-        title="Contact"
-        icon={<Icon icon="group" />}>
+          <Nav.Item 
+            icon={<Icon icon="bar-chart" />} 
+            eventKey="3"
+            componentClass={Link}
+            to="/projects">
+              Projects
+          </Nav.Item>
 
-        <Dropdown.Item
-          icon={<Icon icon="twitter" />}
-          href="https://www.twitter.com/dakshafer"
-          target="_blank">
-          Twitter
-        </Dropdown.Item>
 
-        <Dropdown.Item
-          icon={<Icon icon="linkedin" />}
-          href="https://www.linkedin.com/in/dakotashafer/"
-          target="_blank">
-          LinkedIn
-        </Dropdown.Item>
+          <Dropdown icon={<Icon icon="group" />} title="Social">
 
-        <Dropdown.Item
-          icon={<Icon icon="envelope" />}
-          href="mailto:dakota.shafer@outlook.com">
-          Email
-        </Dropdown.Item>
+            <Dropdown.Item
+              icon={<Icon icon="twitter" />}
+              eventKey="4">
+                Twitter
+            </Dropdown.Item>
 
-      </Dropdown>
+            <Dropdown.Item
+              icon={<Icon icon="linkedin" />}
+              eventKey="5">
+                LinkedIn
+            </Dropdown.Item>
 
-    </Nav>
+            <Dropdown.Item
+              icon={<Icon icon="envelope" />}
+              eventKey="6">
+                Email Me
+            </Dropdown.Item>
+          </Dropdown>
+        </Nav>
+        <Nav pullRight>
+          <Nav.Item 
+            icon={<Icon icon="github" />}
+            href="https://github.com/DakShafer"
+            target="_blank">
+              My GitHub
+            </Nav.Item>
+        </Nav>
+      </Navbar.Body>
+    </Navbar>
   );
 };
 
-export default NavigationBar
+
+class NavigationBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleSelect = this.handleSelect.bind(this);
+    this.state = {
+      activeKey: null
+    };
+  }
+  handleSelect(eventKey) {
+    this.setState({
+      activeKey: eventKey
+    });
+  }
+  render() {
+    const { activeKey } = this.state;
+    return (
+      <BarLayout activeKey={activeKey} onSelect={this.handleSelect} />
+    );
+  }
+}
+
+
+// Construct a router to switch between App views
+class AppRouter extends React.Component {
+  render() {
+    return (
+      <Router>       
+        <Header>
+        <NavigationBar />
+        </Header>
+        <Container id="content-container">
+          <Content id="app-body">
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+
+              <Route exact path="/resume">
+                <About />
+              </Route>
+
+              <Route exact path="/projects">
+                <Projects />
+              </Route>
+
+              <Route exact path="/contact">
+                <h1>Contact me!!</h1>
+              </Route>
+            </Switch>
+          </Content>
+        </Container>
+      </Router>
+    );
+  }
+}
+
+function Home() {
+  return <h1>Home</h1>
+}
+
+function About() {
+  return <h1>Resume</h1>
+}
+
+function Projects() {
+  return <h1>Projects</h1>
+}
+
+
+export default AppRouter
