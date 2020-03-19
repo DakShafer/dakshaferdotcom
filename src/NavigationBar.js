@@ -4,10 +4,10 @@
 //      endpoint defined.
 //
 
-import React, { active } from "react";
-import { Container, Header, Content, Footer } from 'rsuite';
+import React from "react";
+import { Container, Header, Content } from 'rsuite';
 
-import './NavigationBar.css';
+import './Components/NavigationBar.css';
 
 // React Suite Navigatino UI imports
 import {
@@ -24,6 +24,10 @@ import {
   Route,
   Link
 } from "react-router-dom";
+
+// import the different app views
+import HomePage from './Views/Home';
+import ProjectsPage from './Views/Projects';
 
 // build custom nav layout
 const BarLayout = ({ onSelect, activeKey, ...props }) => {
@@ -53,7 +57,6 @@ const BarLayout = ({ onSelect, activeKey, ...props }) => {
               Resume
           </Nav.Item>
 
-
           <Nav.Item 
             icon={<Icon icon="bar-chart" />} 
             eventKey="3"
@@ -62,24 +65,27 @@ const BarLayout = ({ onSelect, activeKey, ...props }) => {
               Projects
           </Nav.Item>
 
-
-          <Dropdown icon={<Icon icon="group" />} title="Social">
-
+          <Dropdown icon={<Icon icon="group" />} title="Social" trigger="hover">
             <Dropdown.Item
               icon={<Icon icon="twitter" />}
-              eventKey="4">
+              eventKey="4"
+              href="https://www.twitter.com/dakshafer"
+              target="_blank">
                 Twitter
             </Dropdown.Item>
 
             <Dropdown.Item
               icon={<Icon icon="linkedin" />}
-              eventKey="5">
+              eventKey="5"
+              href="https://www.linkedin.com/in/dakotashafer/"
+              target="_blank">
                 LinkedIn
             </Dropdown.Item>
 
             <Dropdown.Item
               icon={<Icon icon="envelope" />}
-              eventKey="6">
+              eventKey="6"
+              href="mailto:dakota.shafer@outlook.com">
                 Email Me
             </Dropdown.Item>
           </Dropdown>
@@ -132,7 +138,7 @@ class AppRouter extends React.Component {
           <Content id="app-body">
             <Switch>
               <Route exact path="/">
-                <Home />
+                <HomePage />
               </Route>
 
               <Route exact path="/resume">
@@ -140,7 +146,7 @@ class AppRouter extends React.Component {
               </Route>
 
               <Route exact path="/projects">
-                <Projects />
+                <ProjectsPage />
               </Route>
 
               <Route exact path="/contact">
@@ -154,9 +160,6 @@ class AppRouter extends React.Component {
   }
 }
 
-function Home() {
-  return <h1>Home</h1>
-}
 
 function About() {
   return <h1>Resume</h1>
