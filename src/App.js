@@ -6,7 +6,7 @@ import './App.css';
 import './index.css';
 
 // Import App Components
-import AppRouter from './NavigationBar';
+import AppRouter from './components/AppRouter';
 
 
 function App() {

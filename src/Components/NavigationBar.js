@@ -5,9 +5,8 @@
 //
 
 import React from "react";
-import { Container, Header, Content } from 'rsuite';
 
-import './Components/NavigationBar.css';
+// import './components/NavigationBar.css';
 
 // React Suite Navigatino UI imports
 import {
@@ -17,24 +16,16 @@ import {
   Dropdown,
 } from 'rsuite';
 
-// react-router-dom imports for view routing
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-// import the different app views
-import HomePage from './Views/Home';
-import ProjectsPage from './Views/Projects';
+import './NavigationBar.css';
 
 // build custom nav layout
 const BarLayout = ({ onSelect, activeKey, ...props }) => {
   return (
     <Navbar {...props}>
       <Navbar.Header>
-        <h3 className="namelogo" >
+        <h3 id="namelogo" >
           Dakota Shafer
         </h3>
       </Navbar.Header>
@@ -126,48 +117,5 @@ class NavigationBar extends React.Component {
 }
 
 
-// Construct a router to switch between App views
-class AppRouter extends React.Component {
-  render() {
-    return (
-      <Router>       
-        <Header>
-        <NavigationBar />
-        </Header>
-        <Container id="content-container">
-          <Content id="app-body">
-            <Switch>
-              <Route exact path="/">
-                <HomePage />
-              </Route>
 
-              <Route exact path="/resume">
-                <About />
-              </Route>
-
-              <Route exact path="/projects">
-                <ProjectsPage />
-              </Route>
-
-              <Route exact path="/contact">
-                <h1>Contact me!!</h1>
-              </Route>
-            </Switch>
-          </Content>
-        </Container>
-      </Router>
-    );
-  }
-}
-
-
-function About() {
-  return <h1>Resume</h1>
-}
-
-function Projects() {
-  return <h1>Projects</h1>
-}
-
-
-export default AppRouter
+export default NavigationBar

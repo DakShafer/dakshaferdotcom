@@ -1,18 +1,5 @@
-/* 
 
-This file is intentionally empty but is included for API 
-consistency. The built in react suite css styles for the 
-navbar.
-
-*/
-
-.namelogo {
-    padding: 10px;
-    display: inline-block;
-}
-
-
-#content-container {
-    background-color: whitesmoke;
+#namelogo {
+    margin: 0px;
     padding: 10px;
 }
