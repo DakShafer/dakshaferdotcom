@@ -17,6 +17,8 @@ import NavigationBar from './NavigationBar';
 
 // import the different views
 import HomePage from './home/HomePage';
+import ResumePage from './resume/ResumePage';
+import ProjectsPage from './projects/ProjectsPage';
 
 // Construct a router to switch between App views
 class AppRouter extends React.Component {
@@ -34,7 +36,7 @@ class AppRouter extends React.Component {
                 </Route>
   
                 <Route exact path="/resume">
-                  <About />
+                  <ResumePage />
                 </Route>
   
                 <Route exact path="/projects">
@@ -52,15 +54,6 @@ class AppRouter extends React.Component {
       );
     }
   }
-  
-  
-function About() {
-  return <h1>Resume</h1>
-}
-  
-function ProjectsPage() {
-  return <h1>Projects</h1>
-}
-  
+
   
 export default AppRouter

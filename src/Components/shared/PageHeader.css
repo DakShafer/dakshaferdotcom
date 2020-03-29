@@ -1,0 +1,16 @@
+#header-block {
+    height: 150; 
+    color: #1a1d24;
+    overflow: hidden;
+}
+
+#header-block h1 {
+    font-family: Impact, sans-serif;
+    font-weight: 300;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 175px;
+    opacity: 0.75;
+}

@@ -1,12 +1,15 @@
 :root {
-  background-color: darkslategray;
+  background-color: darkgray;
 }
 
 #content-container {
-  padding: 10px;
-  background-color: darkslategray;
+  background-color: darkgray;
+}
+
+.rs-panel {
+  background-color: #1a1d24;
 }
 
 .rs-panel-group {
-  background-color: gray;
+  background-color: #1a1d24;
 }
